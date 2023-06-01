@@ -1,4 +1,5 @@
 import React from 'react';
+import DashboardTab from './dashboard';
 import Payment from '../screens/payment';
 import Decline from '../screens/decline';
 import Notification from '../screens/notification';
@@ -19,13 +20,20 @@ type RootStackParamList = {
   Decline: undefined;
   Notification: undefined;
   RequestDetails: undefined;
-  // DashboardTab: undefined;
+  DashboardTab: undefined;
 };
 
 const RootStack = createStackNavigator<RootStackParamList>();
 const RootStackScreen = () => {
   return (
-    <RootStack.Navigator initialRouteName="Notification">
+    <RootStack.Navigator initialRouteName="DashboardTab">
+      <RootStack.Screen
+        name="DashboardTab"
+        component={DashboardTab}
+        options={{
+          headerShown: false,
+        }}
+      />
       <RootStack.Screen
         name="Notification"
         component={Notification}
