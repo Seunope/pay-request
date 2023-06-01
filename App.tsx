@@ -1,118 +1,99 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+// import './ignoreWarnings';
+import RootNavigation from './src/route/root';
+// import Toast from 'react-native-toast-message';
+import GLOBALS from './src/config/api/globals';
+import type {StorageManager} from 'native-base';
+import AppFonts from './src/config/utils/fonts';
+import React, {useEffect, useState} from 'react';
+import AppCustom from './src/config/utils/custom';
+import AppColors from './src/config/utils/colors';
+// import RNBootSplash from 'react-native-bootsplash';
+import AppStorage from './src/config/services/AppStorage';
+import {QueryClientProvider, QueryClient} from 'react-query';
+// import toastConfig from './src/config/services/toast/toast.config';
+import {ColorMode, NativeBaseProvider, extendTheme} from 'native-base';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+const theme = extendTheme({
+  colors: AppColors,
+  components: AppCustom,
+  fonts: AppFonts.fontName,
+  fontConfig: AppFonts.primaryFont,
+});
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+const colorModeManager: StorageManager = {
+  get: async () => {
+    try {
+      let val = await AppStorage.getData('@color-mode');
+      return val === 'dark' ? 'dark' : 'light';
+    } catch (e) {
+      console.log(e);
+      return 'light';
+    }
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  set: async (value: ColorMode) => {
+    try {
+      // @ts-ignore
+      await AppStorage.saveData('@color-mode', value);
+    } catch (e) {
+      console.log(e);
+    }
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+};
+
+const config = {
+  dependencies: {
+    'linear-gradient': require('react-native-linear-gradient').default,
   },
-  highlight: {
-    fontWeight: '700',
+};
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      staleTime: 5 * (60 * 1000), // 5 mins
+      cacheTime: 10 * (60 * 1000), // 10 mins
+      retry: 2,
+      retryDelay: retryCount => {
+        console.log('retryCount', retryCount);
+        return retryCount === 0 ? 1000 : 5000; //1sec and 5sec
+      },
+    },
   },
 });
 
+const App = () => {
+  useEffect(() => {
+    // initBootSplash();
+    //setUpOneSignal();
+  }, []);
+
+  const [isLogin, setIsLogin] = useState<boolean | null>(null);
+
+  // const initBootSplash = async () => {
+  //   try {
+  //     let val = await AppStorage.getData('token');
+  //     if (val) {
+  //       setIsLogin(true);
+  //     } else {
+  //       setIsLogin(false);
+  //     }
+  //     // console.log('Thos token', val);
+  //     await RNBootSplash.hide({fade: true});
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <NativeBaseProvider
+        theme={theme}
+        config={config}
+        colorModeManager={colorModeManager}>
+        <RootNavigation />
+      </NativeBaseProvider>
+    </QueryClientProvider>
+  );
+};
 export default App;
