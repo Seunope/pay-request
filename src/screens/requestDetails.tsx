@@ -141,8 +141,11 @@ export default () => {
       </Box>
 
       <HStack space={2} justifyContent="space-between" mt="8">
-        <Button btnTxt="Pay" />
-        <Button btnTxt="Decline" />
+        <Button btnTxt="Pay" onPress={() => navigation.navigate('Payment')} />
+        <Button
+          btnTxt="Decline"
+          onPress={() => navigation.navigate('Decline')}
+        />
       </HStack>
 
       <Text color="blue.80" mt="4" fontSize="xs" textDecorationLine="underline">
@@ -158,15 +161,10 @@ export default () => {
         <Text fontWeight="400">Block Peter</Text>
       </HStack>
 
-      <HStack space="4">
+      <HStack space="4" mb="4">
         <BackIcon color="black" />
         <Text fontWeight="400">Show History</Text>
       </HStack>
-
-      {/* <BlockIcon />
-      <ProfileIcon />
-      <BackIcon color="black" />
-      <HistoryHomeIcon color="red.100" /> */}
     </AppContainer>
   );
 };

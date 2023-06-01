@@ -3,12 +3,7 @@ import {Button} from 'native-base';
 
 interface Props {
   btnTxt: string;
-  // btnType?: string;
-  // outline?: boolean;
-  // marginTop?: string;
-  // onPress: () => void; // or onPress(): void;
-  // size?: string; //"xs", "sm", "md", "lg"
-  // bg?: string;
+  onPress: () => void; // or onPress(): void;
 }
 
 const ButtonComp: React.FC<Props> = props => {
@@ -18,7 +13,8 @@ const ButtonComp: React.FC<Props> = props => {
       bg="blue.100"
       _text={{
         py: '2',
-      }}>
+      }}
+      onPress={props.onPress}>
       {props.btnTxt}
     </Button>
   );

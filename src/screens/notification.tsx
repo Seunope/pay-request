@@ -57,10 +57,7 @@ export default () => {
         showsVerticalScrollIndicator={false}
         data={data}
         renderItem={({item}) => (
-          <Pressable
-            onPress={() =>
-              navigation.navigate('LoanStack', {screen: 'LoanDetails'})
-            }>
+          <Pressable onPress={() => navigation.navigate('RequestDetails')}>
             <Box
               py="1"
               mb="2"

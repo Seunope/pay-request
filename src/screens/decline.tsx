@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '../components/Button';
-import SuccessIcon from '../assets/success';
+import StatusModal from '../components/StatusModal';
 import {useNavigation} from '@react-navigation/core';
 import AppContainer from '../components/AppContainer';
 import {Box, HStack, VStack, TextArea, Avatar, Text} from 'native-base';
 
 export default () => {
   const navigation = useNavigation<any>();
+  const [requestStatus, setRequestStatus] = useState<boolean>(false);
 
-  return (
+  return requestStatus ? (
+    <StatusModal isSuccess={false} message="Declined" />
+  ) : (
     <AppContainer
       scrollAble={true}
       showBack={true}
@@ -72,7 +75,16 @@ export default () => {
         // onChangeText={text => setDescription(text)}
         returnKeyType="send"
       />
-      <Button btnTxt="Decline" />
+      <Button
+        btnTxt="Decline"
+        onPress={
+          () => setRequestStatus(true)
+          // navigation.reset({
+          //   index: 0,
+          //   routes: [{name: 'Notification'}],
+          // })
+        }
+      />
       <Text mt="8" />
     </AppContainer>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import Payment from '../screens/payment';
-import Delcine from '../screens/decline';
+import Decline from '../screens/decline';
 import Notification from '../screens/notification';
 import RequestDetails from '../screens/requestDetails';
 
@@ -16,11 +16,8 @@ import {AppStateProvider} from '../config/utils/context/app_state';
 
 type RootStackParamList = {
   Payment: undefined;
-  Delcine: undefined;
-  // LoanStack: undefined;
-  // AuthStack: undefined;
+  Decline: undefined;
   Notification: undefined;
-  MoreStack: undefined;
   RequestDetails: undefined;
   // DashboardTab: undefined;
 };
@@ -28,7 +25,7 @@ type RootStackParamList = {
 const RootStack = createStackNavigator<RootStackParamList>();
 const RootStackScreen = () => {
   return (
-    <RootStack.Navigator initialRouteName="Delcine">
+    <RootStack.Navigator initialRouteName="Notification">
       <RootStack.Screen
         name="Notification"
         component={Notification}
@@ -53,8 +50,8 @@ const RootStackScreen = () => {
       />
 
       <RootStack.Screen
-        name="Delcine"
-        component={Delcine}
+        name="Decline"
+        component={Decline}
         options={{
           headerShown: false,
         }}
