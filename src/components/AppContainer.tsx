@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import NavTitleBar from './NavTitleBar';
 import NavigationBar from './NavigationBar';
 import Utility from '../config/utils/utils';
 // import Toast from 'react-native-simple-toast';
@@ -10,7 +9,7 @@ import {VStack, Stack, Box, ScrollView} from 'native-base';
 interface Props {
   space?: number;
   padding?: string;
-  headerTxt?: string;
+  headerTxt: string;
   hasHeader?: boolean;
   showBack?: boolean;
   showNotify?: boolean;
@@ -19,6 +18,7 @@ interface Props {
   isDashboard?: boolean;
   checkSession?: boolean;
   children: React.ReactNode;
+  backGroundIsWhite: boolean;
 }
 
 const AppContainer: React.FC<Props> = ({
@@ -27,10 +27,9 @@ const AppContainer: React.FC<Props> = ({
   children,
   headerTxt,
   scrollAble,
-  subHeaderTxt,
+  backGroundIsWhite,
   showBack = true,
   hasHeader = true,
-  showNotify = false,
   isDashboard = false,
 }) => {
   const navigation = useNavigation();
@@ -39,24 +38,15 @@ const AppContainer: React.FC<Props> = ({
     <Box
       flex={1}
       p={padding ? padding : '4'}
-      bgColor="white.100"
+      bgColor={backGroundIsWhite ? 'white.100' : 'blue.50'}
       _dark={{
         bgColor: 'black.100',
       }}
       safeArea>
-      {!isDashboard ? (
-        <>
-          <NavigationBar
-            showNotification={showNotify}
-            showBackArrow={showBack}
-          />
-          <NavTitleBar
-            hasHeader={hasHeader}
-            headerTxt={headerTxt}
-            subHeaderTxt={subHeaderTxt}
-          />
-        </>
-      ) : null}
+      <NavigationBar
+        headerTxt={headerTxt}
+        showBackArrow={showBack}
+      />
 
       {scrollAble ? (
         <ScrollView showsVerticalScrollIndicator={false}>

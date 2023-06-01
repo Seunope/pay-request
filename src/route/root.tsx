@@ -1,5 +1,5 @@
 import React from 'react';
-import Welcome from '../screens/welcome';
+import Notification from '../screens/notification';
 // import AuthStack from './auth';
 // import MoreStack from './more';
 // import LoanStack from './loan';
@@ -20,7 +20,7 @@ type RootStackParamList = {
   // AjoStack: undefined;
   // LoanStack: undefined;
   // AuthStack: undefined;
-  Welcome: undefined;
+  Notification: undefined;
   MoreStack: undefined;
   // BillerStack: undefined;
   // DashboardTab: undefined;
@@ -29,10 +29,10 @@ type RootStackParamList = {
 const RootStack = createStackNavigator<RootStackParamList>();
 const RootStackScreen = () => {
   return (
-    <RootStack.Navigator initialRouteName="Welcome">
+    <RootStack.Navigator initialRouteName="Notification">
       <RootStack.Screen
         name="Welcome"
-        component={Welcome}
+        component={Notification}
         options={{
           headerShown: false,
         }}

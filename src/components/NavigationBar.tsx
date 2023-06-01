@@ -1,16 +1,16 @@
 import React from 'react';
 import BackIcon from '../assets/back';
-import BellIcon from '../assets/bell';
 import {StatusBar} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
-import {Box, useColorMode, Pressable} from 'native-base';
+import {Box, useColorMode, Heading, Pressable} from 'native-base';
 
 interface HeaderProps {
+  headerTxt: string;
   showBackArrow?: boolean;
   showNotification?: boolean;
 }
 
-const HeaderContainer = ({showBackArrow, showNotification}: HeaderProps) => {
+const HeaderContainer = ({showBackArrow, headerTxt}: HeaderProps) => {
   const {colorMode} = useColorMode();
   const navigation = useNavigation();
 
@@ -25,21 +25,23 @@ const HeaderContainer = ({showBackArrow, showNotification}: HeaderProps) => {
         hidden={false}
         barStyle={barStyle}
       />
-      <Box
-        pb="2"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="space-between">
+      <Box pb="2" flexDirection="row" alignItems="center">
         {showBackArrow ? (
           <Pressable onPress={() => navigation.goBack()} p="2" pl="0">
             <BackIcon color={color} />
           </Pressable>
         ) : null}
-        {showNotification ? (
-          <Pressable onPress={() => navigation.goBack()} p="2" pr="0">
-            <BellIcon isActive={false} color={color} />
-          </Pressable>
-        ) : null}
+        <Box flex="1" justifyContent="center">
+          <Heading
+            mt="2"
+            mb="2"
+            textAlign="center"
+            fontSize="2xl"
+            fontWeight={400}
+            color="blue.100">
+            {headerTxt}
+          </Heading>
+        </Box>
       </Box>
     </>
   );

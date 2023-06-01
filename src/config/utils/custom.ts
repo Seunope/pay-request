@@ -1,7 +1,7 @@
 export default {
   Text: {
     baseStyle: {
-      fontWeight: '100',
+      fontWeight: '200',
     },
   },
   Button: {

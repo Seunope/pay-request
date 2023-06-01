@@ -1,23 +1,27 @@
 export default {
   primaryFont: {
-    DMSans: {
+    Montserrat: {
       100: {
-        normal: 'DMSans-Regular',
-        italic: 'DMSans-Italic',
+        normal: 'Montserrat-Thin',
+        italic: 'Montserrat-ThinItalic',
       },
       200: {
-        normal: 'DMSans-Medium',
-        italic: 'DMSans-MediumItalic',
+        normal: 'Montserrat-Regular',
+        italic: 'Montserrat-Italic',
       },
       300: {
-        normal: 'DMSans-Bold',
-        italic: 'DMSans-BoldItalic',
+        normal: 'Montserrat-Medium',
+        italic: 'Montserrat-MediumItalic',
+      },
+      400: {
+        normal: 'Montserrat-Bold',
+        italic: 'Montserrat-BoldItalic',
       },
     },
   },
   fontName: {
-    heading: 'DMSans',
-    body: 'DMSans',
-    mono: 'DMSans',
+    heading: 'Montserrat',
+    body: 'Montserrat',
+    mono: 'Montserrat',
   },
 };
