@@ -41,7 +41,7 @@ const data = [
     date: 'April6, 20202',
     amount: '#700',
     avatarUrl:
-      '1https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU',
   },
 ];
 export default () => {
@@ -53,8 +53,6 @@ export default () => {
       showBack={false}
       backGroundIsWhite={false}
       headerTxt="Notification">
-      <Text mt="2" />
-
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data}

@@ -25,7 +25,7 @@ const HeaderContainer = ({showBackArrow, headerTxt}: HeaderProps) => {
         hidden={false}
         barStyle={barStyle}
       />
-      <Box pb="2" flexDirection="row" alignItems="center">
+      <Box pb="2" mb="6" flexDirection="row" alignItems="center">
         {showBackArrow ? (
           <Pressable onPress={() => navigation.goBack()} p="2" pl="0">
             <BackIcon color={color} />
@@ -36,7 +36,7 @@ const HeaderContainer = ({showBackArrow, headerTxt}: HeaderProps) => {
             mt="2"
             mb="2"
             textAlign="center"
-            fontSize="2xl"
+            fontSize="xl"
             fontWeight={400}
             color="blue.100">
             {headerTxt}

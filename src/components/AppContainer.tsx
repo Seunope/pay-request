@@ -37,16 +37,13 @@ const AppContainer: React.FC<Props> = ({
   return (
     <Box
       flex={1}
-      p={padding ? padding : '4'}
+      p={padding ? padding : '5'}
       bgColor={backGroundIsWhite ? 'white.100' : 'blue.50'}
       _dark={{
         bgColor: 'black.100',
       }}
       safeArea>
-      <NavigationBar
-        headerTxt={headerTxt}
-        showBackArrow={showBack}
-      />
+      <NavigationBar headerTxt={headerTxt} showBackArrow={showBack} />
 
       {scrollAble ? (
         <ScrollView showsVerticalScrollIndicator={false}>
