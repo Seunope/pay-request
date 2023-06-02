@@ -1,22 +1,18 @@
 import React from 'react';
 import {View, Text, Button} from 'native-base';
 import {StyleSheet} from 'react-native';
-// import Button from '../components/ButtonModal';
-import EmptyDataIcon from '../assets/others/empty-data';
 
 interface Props {
   message?: string;
   loading?: boolean;
-  hideImage?: boolean;
   onRetry?: () => void;
 }
 
 const EmptyData: React.FC<Props> = props => {
   return (
     <View style={styles.main}>
-      {props.hideImage ? null : <EmptyDataIcon />}
       <Text fontWeight="300" fontSize="3xl" mt="4">
-        Oops
+        Whoops!
       </Text>
       <Text color="gray.100" fontSize="md" mt="2" textAlign="center" p="4">
         {props.message

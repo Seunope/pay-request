@@ -28,7 +28,7 @@ const HeaderContainer = ({showBackArrow, headerTxt}: HeaderProps) => {
       <Box pb="2" mb="6" flexDirection="row" alignItems="center">
         {showBackArrow ? (
           <Pressable onPress={() => navigation.goBack()} p="2" pl="0">
-            <BackIcon color={color} />
+            <BackIcon />
           </Pressable>
         ) : null}
         <Box flex="1" justifyContent="center">

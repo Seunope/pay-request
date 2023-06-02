@@ -4,7 +4,7 @@ import AppStorage from '../services/AppStorage';
 axios.interceptors.request.use(async config => {
   if (config) {
     config.timeout = 10000;
-    config.headers['X-SERVICE-ID'] = 'GROUPAY-APP';
+    config.headers['X-SERVICE-ID'] = 'ILEERO-APP';
     let token = await AppStorage.getData('token');
     if (token) {
       // console.log('i was in token');

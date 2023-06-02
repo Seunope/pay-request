@@ -9,7 +9,7 @@ import Payment from '../screens/payment';
 import {useColorMode} from 'native-base';
 import Decline from '../screens/decline';
 import Notification from '../screens/notification';
-import RequestDetails from '../screens/requestDetails';
+import RequestDetails from '../screens/request/index';
 import {createStackNavigator} from '@react-navigation/stack';
 import {AppStateProvider} from '../config/utils/context/app_state';
 
@@ -24,7 +24,7 @@ type RootStackParamList = {
 const RootStack = createStackNavigator<RootStackParamList>();
 const RootStackScreen = () => {
   return (
-    <RootStack.Navigator initialRouteName="Payment">
+    <RootStack.Navigator initialRouteName="RequestDetails">
       <RootStack.Screen
         name="DashboardTab"
         component={DashboardTab}

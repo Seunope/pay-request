@@ -1,4 +1,4 @@
-import {format} from 'date-fns';
+// import {format} from 'date-fns';
 import AppStorage from '../services/AppStorage';
 export default class Utility {
   constructor() {}
@@ -15,7 +15,6 @@ export default class Utility {
     }
     return newVal;
   };
-
 
   static formatAmount = (
     num: number,
@@ -72,10 +71,10 @@ export default class Utility {
   //   return dateTime;
   // }
 
-  static formatDate(dateTime: string) {
-    if (dateTime != null) {
-      return format(new Date(dateTime), "d MMM Y hh:mm:aaaaa'm'");
-    }
-    return dateTime;
-  }
-
+  // static formatDate(dateTime: string) {
+  //   if (dateTime != null) {
+  //     return format(new Date(dateTime), "d MMM Y hh:mm:aaaaa'm'");
+  //   }
+  //   return dateTime;
+  // }
+}

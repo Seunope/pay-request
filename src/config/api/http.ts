@@ -1,14 +1,24 @@
-import {PaginationData} from '../utils/types';
 import GLOBALS from './globals';
 import {GetFunc, PutFunc, PostFunc, PatchFunc, DelFunc} from './http-mthd';
 
 // API calls
-export const SIGNUP = async (data: any) => {
-  const url = `${GLOBALS.BASE_URL}user/v1/customer/signup`;
-  return await PostFunc(url, data);
+
+export const GET_MOVIES = async () => {
+  const url = `${GLOBALS.BASE_URL}api/movies`;
+  return await GetFunc(url);
 };
 
-export const GENERATE_EMAIL_OTP = async (email: any) => {
-  const url = `${GLOBALS.BASE_URL}user/v1/customer/generate-email-otp/${email}`;
+export const USER_DATA = async () => {
+  const url = `${GLOBALS.BASE_URL}api/user/1234`;
+  return await GetFunc(url);
+};
+
+export const USER_TRANSACTIONS = async () => {
+  const url = `${GLOBALS.BASE_URL}api/transactions`;
+  return await GetFunc(url);
+};
+
+export const TRANSACTION = async () => {
+  const url = `${GLOBALS.BASE_URL}api/transaction/1234`;
   return await GetFunc(url);
 };

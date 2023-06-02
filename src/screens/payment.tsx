@@ -7,10 +7,11 @@ import {
   Pressable,
   useDisclose,
 } from 'native-base';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from '../components/Button';
 import InputBar from '../components/InputBar';
 import colors from '../config/utils/colors';
+import {GET_MOVIES} from '../config/api/http';
 import StatusModal from '../components/StatusModal';
 import {useNavigation} from '@react-navigation/core';
 import AppContainer from '../components/AppContainer';
@@ -24,6 +25,15 @@ export default () => {
   const [billingAddress, setBillingAddress] = useState<string>();
   const [lastName, setLastName] = useState<string>();
   const [requestStatus, setRequestStatus] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetchRemoteData();
+  }, []);
+
+  const fetchRemoteData = async () => {
+    const data = await GET_MOVIES();
+    console.log('Data', data);
+  };
 
   return requestStatus ? (
     <StatusModal isSuccess={true} message="Completed" />

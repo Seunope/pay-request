@@ -1,17 +1,18 @@
-// import './ignoreWarnings';
+import React from 'react';
 import RootNavigation from './src/route/root';
-// import Toast from 'react-native-toast-message';
-import GLOBALS from './src/config/api/globals';
 import type {StorageManager} from 'native-base';
+import StartBackendServer from './mock-server';
 import AppFonts from './src/config/utils/fonts';
-import React, {useEffect, useState} from 'react';
 import AppCustom from './src/config/utils/custom';
 import AppColors from './src/config/utils/colors';
-// import RNBootSplash from 'react-native-bootsplash';
 import AppStorage from './src/config/services/AppStorage';
 import {QueryClientProvider, QueryClient} from 'react-query';
-// import toastConfig from './src/config/services/toast/toast.config';
 import {ColorMode, NativeBaseProvider, extendTheme} from 'native-base';
+
+if (window.server) {
+  server.shutdown();
+}
+window.server = StartBackendServer;
 
 const theme = extendTheme({
   colors: AppColors,
@@ -63,28 +64,6 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  useEffect(() => {
-    // initBootSplash();
-    //setUpOneSignal();
-  }, []);
-
-  const [isLogin, setIsLogin] = useState<boolean | null>(null);
-
-  // const initBootSplash = async () => {
-  //   try {
-  //     let val = await AppStorage.getData('token');
-  //     if (val) {
-  //       setIsLogin(true);
-  //     } else {
-  //       setIsLogin(false);
-  //     }
-  //     // console.log('Thos token', val);
-  //     await RNBootSplash.hide({fade: true});
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
-
   return (
     <QueryClientProvider client={queryClient}>
       <NativeBaseProvider
