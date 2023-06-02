@@ -12,7 +12,7 @@ export interface ParentContainer {
   children: React.ReactNode;
 }
 
-export interface UserVerification {
+export interface User {
   status?: boolean;
   bvnScore?: number;
   bvnCalls?: number;
@@ -38,54 +38,4 @@ export interface UserVerification {
   isPhoneNumberVerified: boolean;
 }
 
-export interface OptionalLoanProductData {
-  gracePeriod?: number;
-  defaultPercentage?: number;
-  recoveryAgentRating?: number;
-  recoveryPercentageCommission?: number;
-}
-
-export interface LoanProduct {
-  meta?: object;
-  loanName: string;
-  interest: number;
-  customerId: string;
-  totalLoans?: number;
-  loanType: Visibility;
-  activeLoans?: number;
-  gracePeriod?: number;
-  batchReference: string;
-  processingFee: number;
-  maxPermissible: number;
-  availableLoans?: number;
-  minPermissible: number;
-  loanProviderId: string;
-  canceledLoans?: number;
-  userCreditScore: number;
-  completedLoans?: number;
-  recoveryType: Visibility;
-  isDefaultActive: boolean;
-  defaultPercentage?: number;
-  loanUserType: LoanCategory;
-  processingFeeAmount?: number;
-  recoveryAgentRating: number;
-  completedLoanValue?: number;
-  maxTenurePermissible: number;
-  recoveryPercentageCommission: number;
-}
-
-export interface Pagination {
-  totalCount?: number;
-  nextPageKey: string;
-  hasNextPage: boolean;
-  previousPageKey: string;
-  hasPreviousPage: boolean;
-}
-
-export interface PaginationData {
-  prev?: string;
-  where?: any;
-  limit?: number;
-  next?: string | undefined;
-}
 export {};

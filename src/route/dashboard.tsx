@@ -1,31 +1,61 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import {Text} from 'native-base';
 import colors from '../config/utils/colors';
-import AjoIcon from '../assets/nav-bottom/ajo';
-import ActivitiesIcon from '../assets/nav-bottom/activities';
 import HomeIcon from '../assets/nav-bottom/home';
-import MoreIcon from '../assets/nav-bottom/more';
+import ReferIcon from '../assets/nav-bottom/refer';
 import Notification from '../screens/notification';
+import {TouchableOpacity, View} from 'react-native';
+import SettingsIcon from '../assets/nav-bottom/setting';
+import BeneficiaryIcon from '../assets/nav-bottom/beneficiary';
+import ActivitiesIcon from '../assets/nav-bottom/activities';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 export type DashboardStackParams = {
-  LoanBoard: undefined;
-  AjoBoard: undefined;
-  HomeBoard: undefined;
-  MoreBoard: undefined;
-  Notification: undefined;
-  RecoveryBoard: undefined;
-  ProviderBoard: undefined;
+  Home: undefined;
+  Refer: undefined;
+  Settings: undefined;
+  Activities: undefined;
+  Beneficiary: undefined;
 };
 
-// const vStack = {};
 const AppTabs = createBottomTabNavigator<DashboardStackParams>();
+
+const CustomHomeButtom = ({children, onPress}) => (
+  <TouchableOpacity
+    style={{
+      top: -15,
+      marginLeft: 30,
+      marginRight: 30,
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+    onPress={onPress}>
+    <View>{children}</View>
+  </TouchableOpacity>
+);
+
+const CustomHomeText = (focused: boolean) => (
+  <View
+    style={{
+      marginBottom: 2,
+    }}>
+    <HomeIcon />
+    <Text
+      color={focused ? colors.blue[70] : colors.gray[100]}
+      top="-4"
+      textAlign="center"
+      fontSize="2xs">
+      Home
+    </Text>
+  </View>
+);
 
 export default () => {
   return (
     <AppTabs.Navigator
-      drawerType="slide"
       screenOptions={{
-        // headerShown: false,
+        tabBarShowLabel: false,
         tabBarActiveTintColor: colors.blue[70],
         tabBarInactiveTintColor: colors.gray[100],
       }}>
@@ -35,9 +65,7 @@ export default () => {
         options={{
           headerTitle: '',
           headerTransparent: true,
-          tabBarIcon: ({color, size}) => (
-            <ActivitiesIcon color={color} size={size} />
-          ),
+          tabBarIcon: () => <ActivitiesIcon />,
         }}
       />
 
@@ -47,7 +75,7 @@ export default () => {
         options={{
           headerTitle: '',
           headerTransparent: true,
-          tabBarIcon: ({color, size}) => <AjoIcon color={color} size={size} />,
+          tabBarIcon: () => <BeneficiaryIcon />,
         }}
       />
 
@@ -57,16 +85,17 @@ export default () => {
         options={{
           headerTitle: '',
           headerTransparent: true,
-          tabBarIcon: ({color, size}) => <MoreIcon color={color} size={size} />,
+          tabBarIcon: ({focused}) => <CustomHomeText focused={focused} />,
+          tabBarButton: props => <CustomHomeButtom {...props} />,
         }}
       />
       <AppTabs.Screen
-        name="Refer a friend"
+        name="Refer"
         component={Notification}
         options={{
           headerTitle: '',
           headerTransparent: true,
-          tabBarIcon: ({color, size}) => <MoreIcon color={color} size={size} />,
+          tabBarIcon: () => <ReferIcon />,
         }}
       />
       <AppTabs.Screen
@@ -75,7 +104,7 @@ export default () => {
         options={{
           headerTitle: '',
           headerTransparent: true,
-          tabBarIcon: ({color, size}) => <MoreIcon color={color} size={size} />,
+          tabBarIcon: () => <SettingsIcon />,
         }}
       />
     </AppTabs.Navigator>

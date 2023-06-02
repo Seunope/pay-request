@@ -16,30 +16,6 @@ export default class Utility {
     return newVal;
   };
 
-  // static formatNumber(
-  //   numb: number,
-  //   fixed: number = 0,
-  //   withSymbol: boolean = true,
-  // ) {
-  //   var decimalPart;
-  //   let num = Number(numb);
-
-  //   var array = Math.ceil(num).toString().split('');
-  //   var index = -3;
-  //   while (array.length + index > 0) {
-  //     array.splice(index, 0, ',');
-  //     index -= 4;
-  //   }
-
-  //   if (fixed > 0) {
-  //     decimalPart = num.toFixed(fixed).split('.')[1];
-  //     return array.join('') + '.' + decimalPart;
-  //   }
-  //   if (withSymbol) {
-  //     return '₦' + array.join('');
-  //   }
-  //   return array.join('');
-  // }
 
   static formatAmount = (
     num: number,
@@ -103,32 +79,3 @@ export default class Utility {
     return dateTime;
   }
 
-  static sessionManager = async () => {
-    const data = {} as {code: number; route: string; message: string};
-    const now = new Date();
-    const sessionTime = await AppStorage.getData('expireAt');
-    const token = await AppStorage.getData('token');
-
-    let timeNow = now.getTime();
-
-    if (timeNow > sessionTime || token === null) {
-      await AppStorage.deleteData('token');
-      await AppStorage.deleteData('expireAt');
-      if (sessionTime) {
-        data.code = 1;
-        data.route = 'AuthStack';
-        data.message = 'Your session expired!';
-        return data;
-      } else {
-        data.code = 2;
-        data.route = 'OnBoard';
-        data.message = 'Session expired!';
-        return data;
-      }
-    } else {
-      data.code = 3;
-      data.route = 'DashboardTab';
-      return data;
-    }
-  };
-}

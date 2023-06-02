@@ -1,17 +1,15 @@
 import React from 'react';
-import DashboardTab from './dashboard';
-import Payment from '../screens/payment';
-import Decline from '../screens/decline';
-import Notification from '../screens/notification';
-import RequestDetails from '../screens/requestDetails';
-
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native';
+import DashboardTab from './dashboard';
+import Payment from '../screens/payment';
 import {useColorMode} from 'native-base';
-// import DashboardTab from './dashboard';
+import Decline from '../screens/decline';
+import Notification from '../screens/notification';
+import RequestDetails from '../screens/requestDetails';
 import {createStackNavigator} from '@react-navigation/stack';
 import {AppStateProvider} from '../config/utils/context/app_state';
 

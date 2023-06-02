@@ -1,21 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import NavigationBar from './NavigationBar';
-import Utility from '../config/utils/utils';
-// import Toast from 'react-native-simple-toast';
-import {useNavigation} from '@react-navigation/core';
-import {StackActions} from '@react-navigation/native';
-import {VStack, Stack, Box, ScrollView} from 'native-base';
+import {VStack, Box, ScrollView} from 'native-base';
 
 interface Props {
   space?: number;
   padding?: string;
   headerTxt: string;
-  hasHeader?: boolean;
   showBack?: boolean;
   showNotify?: boolean;
   scrollAble?: boolean;
   subHeaderTxt?: string;
-  isDashboard?: boolean;
   checkSession?: boolean;
   children: React.ReactNode;
   backGroundIsWhite: boolean;
@@ -29,11 +23,7 @@ const AppContainer: React.FC<Props> = ({
   scrollAble,
   backGroundIsWhite,
   showBack = true,
-  hasHeader = true,
-  isDashboard = false,
 }) => {
-  const navigation = useNavigation();
-
   return (
     <Box
       flex={1}

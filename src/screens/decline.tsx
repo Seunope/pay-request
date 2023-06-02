@@ -75,16 +75,7 @@ export default () => {
         // onChangeText={text => setDescription(text)}
         returnKeyType="send"
       />
-      <Button
-        btnTxt="Decline"
-        onPress={
-          () => setRequestStatus(true)
-          // navigation.reset({
-          //   index: 0,
-          //   routes: [{name: 'Notification'}],
-          // })
-        }
-      />
+      <Button btnTxt="Decline" onPress={() => setRequestStatus(true)} />
       <Text mt="8" />
     </AppContainer>
   );

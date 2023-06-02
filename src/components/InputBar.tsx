@@ -30,11 +30,14 @@ const InputBar: React.FC<Props> = props => {
   return (
     <FormControl
       isInvalid={isValid}
+      bg="gray.80"
+      borderRadius="6"
+      p="2"
       w={{
         base: '100%',
         xl: '85%',
       }}>
-      <Text fontWeight="300" mb="1">
+      <Text fontWeight="300" ml="3" mb={0} fontSize="2xs" color="gray.100">
         {props.label}
       </Text>
       {props.password ? (
@@ -55,7 +58,15 @@ const InputBar: React.FC<Props> = props => {
       ) : props.isDisabled ? (
         <Input isDisabled={true} borderRadius="4" />
       ) : (
-        <Input {...props} onChangeText={props.onChangeText} />
+        <Input
+          {...props}
+          bg="gray.80"
+          m={0}
+          ml={3}
+          p={0}
+          borderColor="gray.80"
+          onChangeText={props.onChangeText}
+        />
       )}
 
       <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>

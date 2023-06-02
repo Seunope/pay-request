@@ -16,8 +16,14 @@ export default {
   Input: {
     baseStyle: {
       borderRadius: 'sm',
+      fontSize: 'xl',
+      _text: {
+        fontWeight: '200',
+        px: '14',
+      },
       _focus: {
-        borderColor: 'blue.200',
+        borderColor: 'gray.80',
+        bg: 'gray.80',
       },
     },
   },
