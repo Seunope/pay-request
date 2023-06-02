@@ -1,5 +1,6 @@
 import React, {LegacyRef, useState} from 'react';
 import EyeIcon from '../assets/others/eye';
+import VisaIcon from '../assets/others/visa';
 import {Input, FormControl, WarningOutlineIcon, Icon, Text} from 'native-base';
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
   value?: string;
   error?: string;
   isValid?: boolean;
-  password?: boolean;
+  hasIcon?: boolean;
   minLength?: number;
   maxLength?: number;
   placeholder: string;
@@ -40,18 +41,22 @@ const InputBar: React.FC<Props> = props => {
       <Text fontWeight="300" ml="3" mb={0} fontSize="2xs" color="gray.100">
         {props.label}
       </Text>
-      {props.password ? (
+      {props.hasIcon ? (
         <Input
           {...props}
+          bg="gray.80"
+          m={0}
+          ml={3}
+          p={0}
+          borderColor="gray.80"
           onChangeText={props.onChangeText}
-          secureTextEntry={!passwordShow}
           InputRightElement={
             <Icon
-              as={<EyeIcon isVisible={passwordShow} />}
+              as={<VisaIcon />}
               size={5}
               mr="2"
               color="muted.400"
-              onPress={doShowPassword}
+              // onPress={doShowPassword}
             />
           }
         />

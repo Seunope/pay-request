@@ -1,44 +1,44 @@
-import React from 'react';
 import {
   Box,
-  HStack,
-  FlatList,
-  VStack,
-  Pressable,
-  Divider,
-  Avatar,
   Text,
+  HStack,
+  VStack,
+  Avatar,
+  Divider,
+  FlatList,
+  Pressable,
 } from 'native-base';
+import React from 'react';
 import {useNavigation} from '@react-navigation/core';
 import AppContainer from '../components/AppContainer';
 const data = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb2p8ba',
     fullName: 'Shola Ajayi',
-    date: 'April6, 20202',
-    amount: '#700',
+    date: 'April6, 20202 9:45:09am',
+    amount: '#750',
     avatarUrl:
       '1https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
   },
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    fullName: 'Shola Ajayi',
+    fullName: 'Judge Ajayi',
     date: 'April6, 20202 9:45:09am',
-    amount: '#700',
+    amount: '#9000',
     avatarUrl:
       '1https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU',
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    fullName: 'Shola Ajayi',
-    date: 'April6, 20202',
-    amount: '#700',
+    fullName: 'John Doe',
+    date: 'April6, 20202 9:45:09am',
+    amount: '#456',
     avatarUrl: '1https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg',
   },
   {
     id: '68694a0f-3da1-431f-bd56-142371e29d7o2',
-    fullName: 'Shola Ajayi',
-    date: 'April6, 20202',
+    fullName: 'Bedemi Uche',
+    date: 'April6, 20202 9:45:09am',
     amount: '#700',
     avatarUrl:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU',

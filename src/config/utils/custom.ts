@@ -7,6 +7,7 @@ export default {
   Button: {
     baseStyle: {
       borderRadius: '10',
+      shadow: '6',
       _text: {
         fontWeight: '400',
         px: '12',

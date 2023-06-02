@@ -1,24 +1,13 @@
 import React from 'react';
-import {
-  Box,
-  HStack,
-  FlatList,
-  VStack,
-  Pressable,
-  Divider,
-  Stack,
-  Avatar,
-  Text,
-  // Button,
-} from 'native-base';
-import {useNavigation} from '@react-navigation/core';
-import AppContainer from '../components/AppContainer';
+import BackIcon from '../assets/back';
 import Button from '../components/Button';
-import ProfileIcon from '../assets/request/profile';
+import BellIcon from '../assets/others/bell';
 import BlockIcon from '../assets/request/block';
 import HistoryIcon from '../assets/request/history';
-import BackIcon from '../assets/back';
+import {useNavigation} from '@react-navigation/core';
+import AppContainer from '../components/AppContainer';
 import HistoryHomeIcon from '../assets/nav-bottom/home';
+import {Box, HStack, VStack, Avatar, Text} from 'native-base';
 
 export default () => {
   const navigation = useNavigation<any>();
@@ -153,16 +142,16 @@ export default () => {
       </Text>
 
       <HStack space="4">
-        <BackIcon color="black" />
+        <BellIcon isActive={false} color="#000" />
         <Text fontWeight="400">Report Shola</Text>
       </HStack>
       <HStack space="4">
-        <BackIcon color="black" />
+        <BellIcon isActive={false} color="#000" />
         <Text fontWeight="400">Block Peter</Text>
       </HStack>
 
-      <HStack space="4" mb="4">
-        <BackIcon color="black" />
+      <HStack space="4" mb="8">
+        <BellIcon isActive={false} color="#000" />
         <Text fontWeight="400">Show History</Text>
       </HStack>
     </AppContainer>
