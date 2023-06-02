@@ -22,10 +22,10 @@ export default (props: Props) => {
   const navigation = useNavigation<any>();
 
   return (
-    <Box p="5" mb="4" flex="1" safeArea bgColor={'blue.50'}>
+    <Box p="5" flex="1" safeArea bgColor={'blue.50'}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <VStack space={4}>
-          <HStack space="4" bg="white.100" p="4" borderRadius="6" mt="8">
+          <HStack space="4" bg="white.100" p="4" borderRadius="6" mt="2">
             <Avatar
               size="xl"
               bg="blue.100"
@@ -136,21 +136,21 @@ export default (props: Props) => {
             </VStack>
           </Box>
 
-          <Center p="6">
+          <Center p="4">
             {props.isSuccess ? <SuccessIcon /> : <FailedIcon />}
           </Center>
 
           <Box>
             <Text
               textAlign="center"
-              fontSize="2xl"
+              fontSize="xl"
               fontWeight="300"
               color="blue.100">
               Transaction
             </Text>
             <Text
               textAlign="center"
-              fontSize="2xl"
+              fontSize="xl"
               fontWeight="300"
               color="blue.100"
               mb="4">
@@ -167,7 +167,7 @@ export default (props: Props) => {
               })
             }
           />
-          <Text mt="4" />
+          <Text mt="2" />
         </VStack>
       </ScrollView>
     </Box>

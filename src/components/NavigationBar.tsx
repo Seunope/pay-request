@@ -14,7 +14,6 @@ const HeaderContainer = ({showBackArrow, headerTxt}: HeaderProps) => {
   const {colorMode} = useColorMode();
   const navigation = useNavigation();
 
-  const color = colorMode === 'light' ? 'black' : 'white';
   const barStyle = colorMode === 'light' ? 'dark-content' : 'light-content';
 
   return (

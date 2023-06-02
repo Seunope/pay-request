@@ -23,19 +23,6 @@ export interface User {
   hasFaceId: boolean;
   bvnLastName: string;
   canBeAgent: boolean;
-  bvnFirstName: string;
-  canTakeLoan: boolean;
-  hasGuarantor: boolean;
-  hasNationalId: boolean;
-  isBVNVerified: boolean;
-  hasEmployment: boolean;
-  canBeProvider: boolean;
-  hasContactList: boolean;
-  bvnDateOfBirth?: string;
-  bvnPhoneNumber?: string;
-  hasPersonInfo: boolean;
-  isEmailVerified: boolean;
-  isPhoneNumberVerified: boolean;
 }
 
 export {};

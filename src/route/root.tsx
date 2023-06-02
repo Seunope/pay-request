@@ -24,7 +24,7 @@ type RootStackParamList = {
 const RootStack = createStackNavigator<RootStackParamList>();
 const RootStackScreen = () => {
   return (
-    <RootStack.Navigator initialRouteName="RequestDetails">
+    <RootStack.Navigator initialRouteName="DashboardTab">
       <RootStack.Screen
         name="DashboardTab"
         component={DashboardTab}

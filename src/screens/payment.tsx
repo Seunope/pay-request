@@ -1,4 +1,5 @@
 import {
+  Box,
   Text,
   Input,
   Center,
@@ -23,7 +24,6 @@ export default () => {
   const [cardNumber, setCardNumber] = useState<string>();
   const [cardName, setCardName] = useState<string>();
   const [billingAddress, setBillingAddress] = useState<string>();
-  const [lastName, setLastName] = useState<string>();
   const [requestStatus, setRequestStatus] = useState<boolean>(false);
 
   useEffect(() => {
@@ -33,6 +33,11 @@ export default () => {
   const fetchRemoteData = async () => {
     const data = await GET_MOVIES();
     console.log('Data', data);
+  };
+
+  const doSubmit = () => {
+    onOpen();
+    setTimeout(() => setRequestStatus(true), 3000);
   };
 
   return requestStatus ? (
@@ -46,7 +51,6 @@ export default () => {
       <Text>Add a debit Card</Text>
 
       <InputBar
-        name="lastName"
         value={cardNumber}
         label="Card Number"
         keyboardType="number-pad"
@@ -56,23 +60,53 @@ export default () => {
         onChangeText={text => setCardNumber(text)}
       />
 
-      <HStack justifyContent="space-between">
-        <Input variant="filled" placeholder="Filled" />
+      <HStack space="2" justifyContent="space-between">
+        <Box flex="1" bg="gray.80" borderRadius="6">
+          <Text
+            fontWeight="300"
+            ml="3"
+            mb={0}
+            fontSize="2xs"
+            color="gray.100"
+            mb="0">
+            Expiry Date
+          </Text>
+          <Input
+            variant="filled"
+            placeholder="02/03"
+            bg="gray.80"
+            borderColor="gray.80"
+          />
+        </Box>
 
-        <Input variant="filled" placeholder="Filled" />
+        <Box flex="1" bg="gray.80" borderRadius="6">
+          <Text
+            fontWeight="300"
+            ml="3"
+            mb={0}
+            fontSize="2xs"
+            color="gray.100"
+            mb="0">
+            CVV
+          </Text>
+          <Input
+            variant="filled"
+            placeholder="***"
+            bg="gray.80"
+            borderColor="gray.80"
+          />
+        </Box>
       </HStack>
 
       <InputBar
-        name="lastName"
         value={cardName}
         label="Cardholder Name"
         // error={errors?.lastName}
-        placeholder="Valid Last name"
+        placeholder="Card name"
         onChangeText={text => setCardName(text)}
       />
 
       <InputBar
-        name="lastName"
         value={billingAddress}
         label="Billing Address"
         // error={errors?.lastName}
@@ -81,7 +115,7 @@ export default () => {
       />
 
       <Text mb="8" />
-      <Button btnTxt="Pay" onPress={onOpen} />
+      <Button btnTxt="Pay" onPress={() => doSubmit()} />
 
       <Actionsheet isOpen={isOpen} onClose={onClose} hideDragIndicator>
         <Actionsheet.Content borderTopRadius="10">

@@ -1,5 +1,5 @@
 import GLOBALS from './globals';
-import {GetFunc, PutFunc, PostFunc, PatchFunc, DelFunc} from './http-mthd';
+import {GetFunc, PostFunc} from './http-mthd';
 
 // API calls
 
@@ -21,4 +21,9 @@ export const USER_TRANSACTIONS = async () => {
 export const TRANSACTION = async () => {
   const url = `${GLOBALS.BASE_URL}api/transaction/1234`;
   return await GetFunc(url);
+};
+
+export const POST_TRANSACTION = async (data: any) => {
+  const url = `${GLOBALS.BASE_URL}api/transaction/1234`;
+  return await PostFunc(url, data);
 };

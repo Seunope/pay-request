@@ -1,5 +1,5 @@
-import {USER_TRANSACTIONS, TRANSACTION} from '../api/http';
 import {useQuery, useMutation} from 'react-query';
+import {USER_TRANSACTIONS, TRANSACTION, POST_TRANSACTION} from '../api/http';
 
 export const useTransactions = () => {
   return useQuery(['transaction-all'], USER_TRANSACTIONS, {
@@ -15,4 +15,8 @@ export const useTransaction = () => {
       return data?.data?.data;
     },
   });
+};
+
+export const useAddTransaction = () => {
+  return useMutation(POST_TRANSACTION);
 };

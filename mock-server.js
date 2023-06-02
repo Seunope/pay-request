@@ -125,7 +125,7 @@ const server = createServer({
       let attrs = JSON.parse(request.requestBody);
       attrs.id = Math.floor(Math.random() * 100);
 
-      return {transaction: attrs};
+      return {data: attrs};
     });
 
     this.post('/payment/success', () => {

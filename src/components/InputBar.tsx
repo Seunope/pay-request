@@ -24,9 +24,9 @@ interface Props {
 const InputBar: React.FC<Props> = props => {
   const [passwordShow, setPasswordShow] = useState(false);
   const isValid = props.error && props.error.length > 0 ? true : false;
-  const doShowPassword = () => {
-    setPasswordShow(!passwordShow);
-  };
+  // const doShowPassword = () => {
+  //   setPasswordShow(!passwordShow);
+  // };
 
   return (
     <FormControl
